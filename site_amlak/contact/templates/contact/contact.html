@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+
+
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<body>
+
+
+
+
+
+
+  <!--/ Intro Single star /-->
+  <section dir="rtl" class="intro-single">
+    <div dir="rtl" class="container">
+      <div dir="rtl" class="row">
+        <div dir="rtl" class="col-md-12 col-lg-8">
+          <div dir="rtl" class="title-single-box">
+            <h1 dir="rtl" class="title-single">با ما در ارتباط باشید </h1>
+            <span dir="rtl" class="color-text-a">شما میتوانید برای فزوش املاک خود با ما همکاری کنید .در صورت اطلاع از جدید ترین اخبار فروش ملک نیز میتوانید اطلاعات خود را وارد کرده و ما شما را مطلع خواهیم کرد </span>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol dir="ltr" class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="{% url 'house:house_list'  %}">صفحه اصلی </a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                تماس با ما 
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+  <!--/ Contact Star /-->
+  <section class="contact">
+    <div class="container">
+      <div class="row">
+       
+        <div class="col-sm-12 section-t8">
+          <div class="row">
+            <div class="col-md-7">
+              <form class="form-a " action="" method="post" role="form">
+                {% csrf_token %}
+
+                <div id="sendmessage">Your message has been sent. Thank you!</div>
+                <div id="errormessage"></div>
+                <div dir="rtl" class="row">
+                  <div dir="rtl" class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="text" name="name" class="form-control form-control-lg form-control-a" placeholder="نام شما " data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input name="email" type="email" class="form-control form-control-lg form-control-a" placeholder="ایمیل شما " data-rule="email" data-msg="Please enter a valid email">
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <input type="text" name="subject" class="form-control form-control-lg form-control-a" placeholder="موضوع" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <textarea name="content" class="form-control"  cols="45" rows="8" data-rule="required" data-msg="Please write something for us" placeholder="متن پیام"></textarea>
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <button type="submit" class="btn btn-a">ارسال پیام</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-5 section-md-t3">
+              <div class="icon-box section-b2">
+                <div class="icon-box-icon">
+                  <span class="ion-ios-paper-plane"></span>
+                </div>
+                <div class="icon-box-content table-cell">
+                  <div class="icon-box-title">
+                    <h4 class="icon-title">ارتباط با ما </h4>
+                  </div>
+                  <div class="icon-box-content">
+                    <p class="mb-1">ایمیل :
+                      <span class="color-a">ali.nati080@gmail.com</span>
+                    </p>
+                    <p class="mb-1">شماره تلفن :
+                      <span class="color-a">09303719895</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="icon-box section-b2">
+                <div class="icon-box-icon">
+                  <span class="ion-ios-pin"></span>
+                </div>
+                <div class="icon-box-content table-cell">
+                  <div class="icon-box-title">
+                    <h4 class="icon-title">لوکیشن ما :</h4>
+                  </div>
+                  <div class="icon-box-content">
+                    <p class="mb-1">
+                      اصفهان
+                     
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="icon-box">
+                <div class="icon-box-icon">
+                  <span class="ion-ios-redo"></span>
+                </div>
+                <div class="icon-box-content table-cell">
+                  <div class="icon-box-title">
+                    <h4 class="icon-title">صفحات مجازی :</h4>
+                  </div>
+                  <div class="icon-box-content">
+                    <div class="socials-footer">
+                      <ul class="list-inline">
+                     
+                        
+                        <li class="list-inline-item">
+                          <a href="#" class="link-one">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a href="#" class="link-one">
+                            <i class="fa fa-telegram" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        
+                      
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Contact End /-->
+
+
+
+
+</body>
+</html>
+{% endblock content %}

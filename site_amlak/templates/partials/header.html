@@ -1,0 +1,139 @@
+<div class="click-closed"></div>
+<!--/ Form Search Star /-->
+<div dir="rtl" class="box-collapse">
+  <div class="title-box-d">
+    <h3 class="title-d">ملک مورد نظر خود را پیدا کنید </h3>
+  </div>
+  <span class="close-box-collapse right-boxed ion-ios-close"></span>
+  <div class="box-collapse-wrap form">
+    <form class="form-a" method="GET" action="{% url 'house:search'  %}">
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <div class="form-group">
+            <label for="Type">اسم </label>
+            <input name="search" type="text" class="form-control form-control-lg form-control-a" >
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group">
+            <label for="Type">وضعیت </label>
+            <select name="select1" class="form-control form-control-lg form-control-a" id="Type">
+              <option></option>
+              <option>برای فروش</option>
+              <option>برای اجاره</option>
+             
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group">
+            <label for="city">محدوده</label>
+            <select  name="select2" class="form-control form-control-lg form-control-a" id="city">
+              <option></option>
+              <option>شیخ صدوق </option>
+              <option>مرداویج</option>
+              <option>خاقانی</option>
+              <option>شهدا</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group">
+            <label for="bedrooms">تعداد خواب</label>
+            <select name="select3" class="form-control form-control-lg form-control-a" id="bedrooms">
+              <option></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group">
+            <label for="bathrooms">حمام و دسشویی</label>
+            <select name="select4" class="form-control form-control-lg form-control-a" id="bathrooms">
+              <option></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group">
+            <label for="price">قیمت از : (قیمت ها به میلیون تومان)</label>
+            <select name="select5" class="form-control form-control-lg form-control-a" id="price">
+              <option>0</option>
+              <option>100</option>
+              <option>500</option>
+              <option>1000</option>
+              <option>5000</option>
+            </select>
+          </div>
+        </div>
+        <div  class="col-md-12">
+          <button  dir="rtl" type="submit" class="btn btn-b">پیدا کردن </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!--/ Form Search End /-->
+
+<!--/ Nav Star /-->
+<nav  class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+  <div class="container">
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+      aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+     
+    </button>
+    <a class="navbar-brand text-brand" href="{% url 'house:house_list'  %}">املاک<span class="color-b"> سبز</span></a>
+    <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
+      data-target="#navbarTogglerDemo01" aria-expanded="false">
+      <span class="fa fa-search" aria-hidden="true"></span>
+    </button>
+    <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'house:house_list'  %}">صفحه اصلی </a>
+        </li>
+    
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'house:about'  %}">درباره ما </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'house:house_total_list'  %}">املاک</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'blog:blog_list'  %}">بلاگ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'agent:agent_list'  %}"> مشاوران املاک </a>
+        </li>
+        
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contact:contact_list'  %}">تماس با ما </a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <p class="nav-link  " disabeld href="#">   {{ user.username}} سلام </p>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  " disabeld href="{% url 'logout' %}"> خارج شدن</a>
+        </li>
+
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'login'  %}">  ورود  </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse"
+      data-target="#navbarTogglerDemo01" aria-expanded="false">
+      <span class="fa fa-search" aria-hidden="true"></span>
+    </button>
+  </div>
+</nav>
+<!--/ Nav End /-->

@@ -1,0 +1,90 @@
+
+
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<!-- Section: Design Block -->
+<section class=" text-center text-lg-start">
+    <style>
+      .rounded-t-5 {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+      }
+  
+      @media (min-width: 992px) {
+        .rounded-tr-lg-0 {
+          border-top-right-radius: 0;
+        }
+  
+        .rounded-bl-lg-5 {
+          border-bottom-left-radius: 0.5rem;
+        }
+      }
+    </style>
+    <div   class="card mb-3">
+      <div class="row g-0 d-flex align-items-center">
+        <div class="col-lg-4 d-none d-lg-flex">
+          <img style="width:  auto; height:auto; " src="{% static 'img/property-1.jpg' %}" alt="Trendy Pants and Shoes"
+            class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+          >
+        </div>
+        <div  class="col-lg-8">
+        <div    class="col-lg-8">
+          <div class="card-body py-5 px-md-5">
+  
+            <form  method="post">
+                {% csrf_token %}
+              <!-- Email input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input name="username" type="name" id="form2Example1" class="form-control" />
+                <label class="form-label" for="form2Example1">نام کاربری</label>
+              </div>
+  
+              <!-- Password input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input type="password" name="password" id="form2Example2" class="form-control" />
+                <label class="form-label" for="form2Example2">رمز عبور</label>
+              </div>
+
+              {% if messages   %}
+              <ul class="messages">
+                  {% for message in messages %}
+
+                  <li style="text align:right ; "  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+
+                  {% endfor %}
+              </ul>
+              {% endif %}
+  
+              <!-- 2 column grid layout for inline styling -->
+              <div class="row mb-4">
+                <div class="col d-flex justify-content-center">
+                 
+                  <!-- Checkbox -->
+                  <div class="form-check">
+              <a href=" {% url "signup" %}"> هنوز ثبت نام نکرده اید ؟</a>
+                  </div>
+                </div>
+  
+                <!-- <div class="col">
+                  
+                  <a href="#">فراموشی رمز عبور ؟</a>
+                </div> -->
+              </div>
+  
+              <!-- Submit button -->
+              <button  type="Submit"  class="btn btn-primary btn-block mb-4"> وارد شدن </button>
+  
+            </form>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->
+
+{% endblock content %}

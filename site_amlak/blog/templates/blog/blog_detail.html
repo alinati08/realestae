@@ -1,0 +1,208 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+
+
+
+  <!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">{{blog.title}}</h1>
+            <span class="color-text-a">خبر های جدید درباره ملک و زمین </span>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="{% url 'house:house_list'  %}">صفحه اصلی</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                {{blog.title}}
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+  <!--/ News Single Star /-->
+  <section class="news-single nav-arrow-b">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="news-img-box">
+            <img style="padding: 0px 0 0 150px;" src="{{blog.image.url}}" alt="" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+          <div class="post-information">
+            <ul class="list-inline text-center color-a">
+              <li class="list-inline-item mr-2">
+                <strong>Author: </strong>
+                <span class="color-text-a">{{blog.author}}</span>
+              </li>
+              <li class="list-inline-item mr-2">
+                <strong>Category: </strong>
+                <span class="color-text-a">{{blog.category}}</span>
+              </li>
+              <li class="list-inline-item">
+                <strong>Date: </strong>
+                <span class="color-text-a">{{blog.created_at}}</span>
+              </li>
+            </ul>
+          </div>
+          <div class="post-content color-text-a">
+            <p dir="rtl" class="post-intro">
+              {{blog.content|safe}}
+            </p>
+          
+          </div>
+          <div class="post-footer">
+            <div class="post-share">
+              <span>Share: </span>
+              <ul class="list-inline socials">
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fa fa-telegram" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-10 offset-md-1 col-lg-10 offset-lg-1">
+          <div class="title-box-d">
+            <h3 class="title-d">نظرات </h3>
+          </div>
+          <div class="box-comments">
+            <ul class="list-comments">
+                {% for cm in comments %}
+                <li>
+                    <div class="comment-avatar">
+                      <img src="{% static 'img/image-user.png' %}" alt="">
+                    </div>
+                    <div class="comment-details">
+                      <h4 class="comment-author">{{cm.name}}</h4>
+                      <span>{{cm.date}}</span>
+                      <p class="comment-description">
+                        {{cm.message}}
+                      </p>
+                      <a href="3">Reply</a>
+                    </div>
+                  </li>
+                {% endfor %}
+              
+              <!-- <li class="comment-children">
+                <div class="comment-avatar">
+                  <img src="img/author-1.jpg" alt="">
+                </div>
+                <div class="comment-details">
+                  <h4 class="comment-author">Oliver Colmenares</h4>
+                  <span>18 Sep 2017</span>
+                  <p class="comment-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
+                    ipsam temporibus maiores
+                    quae.
+                  </p>
+                  <a href="3">Reply</a>
+                </div>
+              </li>
+              <li>
+                <div class="comment-avatar">
+                  <img src="img/author-2.jpg" alt="">
+                </div>
+                <div class="comment-details">
+                  <h4 class="comment-author">Emma Stone</h4>
+                  <span>18 Sep 2017</span>
+                  <p class="comment-description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
+                    ipsam temporibus maiores
+                    quae natus libero optio.
+                  </p>
+                  <a href="3">Reply</a>
+                </div>
+              </li> -->
+            </ul>
+          </div>
+          <div class="form-comments">
+            <div class="title-box-d">
+              <h3 class="title-d"> نظر خود را با ما به اشتراک بگذارید </h3>
+            </div>
+            <form class="form-a" method="post">
+                {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputName" >  نام    </label>
+                    <input type="text" name="name" class="form-control form-control-lg form-control-a" id="inputName" placeholder="Name *"
+                      required>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div class="form-group">
+                    <label for="inputEmail1">ایمیل خود را وارد کنید </label>
+                    <input type="email" name="email" class="form-control form-control-lg form-control-a" id="inputEmail1"
+                      placeholder="Email *" required>
+                  </div>
+                </div>
+                <!-- <div class="col-md-12 mb-3">
+                  <div class="form-group">
+                    <label for="inputUrl">Enter website</label>
+                    <input type="url" class="form-control form-control-lg form-control-a" id="inputUrl" placeholder="Website">
+                  </div>
+                </div> -->
+                <div class="col-md-12 mb-3">
+                  <div class="form-group">
+                    <label for="textMessage">نظر شما :</label>
+                    <textarea id="textMessage" name="message" class="form-control" placeholder="Comment *" name="message" cols="45"
+                      rows="8" required></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-a">ثبت نظر </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ News Single End /-->
+
+
+
+
+</body>
+</html>
+{% endblock content %}

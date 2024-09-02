@@ -1,0 +1,290 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+  
+<!-- <h1>detail</h1>
+<ul>
+    <li>
+        {{house}}
+        <li>{{house.price}}</li>
+        <li>{{house.address}}</li>
+    </li>
+</ul> -->
+
+
+  <!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">{{house.name}}</h1>
+            <span class="color-text-a">{{house.address}}</span>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="{% url 'house:house_list'  %}">صفحه اصلی</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="{% url 'house:house_total_list'  %}">املاک</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                {{house.name}}
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+  <!--/ Property Single Star /-->
+  <section class="property-single nav-arrow-b">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+            <div class="carousel-item-b">
+              <img src=" {{house.first_photo.url}} " alt="">
+            </div>
+            {% if house.second_photo   %}
+            <div class="carousel-item-b">
+              <img src="{{house.scond_photo.url}}" alt="">
+            </div>
+            {% endif %}
+
+            {% if house.third_photo  %}
+            
+            <div class="carousel-item-b">
+              <img src="{{house.third_photo.url}}" alt="">
+            </div>
+            {% endif %}
+
+          </div>
+          <div class="row justify-content-between">
+            <div class="col-md-5 col-lg-4">
+              <div class="property-price d-flex justify-content-center foo">
+                <div class="card-header-c d-flex">
+                  <div class="card-box-ico">
+                    <span class="ion-money">تومان</span>
+                  </div>
+                  <div class="card-title-c align-self-center">
+                    <h5 class="title-c">{{house.price}}</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="property-summary">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="title-box-d section-t4">
+                      <h3 class="title-d">حلاصه ای از مشخصات</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="summary-list">
+                  <ul class="list">
+                    <li class="d-flex justify-content-between">
+                      <strong>شماره ملک :</strong>
+                      <span>{{house.id}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>لوکیشن:</strong>
+                      <span>{{house.address}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>نوع ملک</strong>
+                      <span>{{house.Property_Type}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>وضعیت :</strong>
+                      <span>{{house.house_statue}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>مساحت</strong>
+                      <span>{{house.aria}}متر مربع
+                        
+                      </span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>تعداد اتاق :</strong>
+                      <span>{{house.room}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>تعداد حمام و دسشویی :</strong>
+                      <span>2</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>پارکینگ</strong>
+                      <span>{{house.house_park}}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7 col-lg-7 section-md-t3">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="title-box-d">
+                    <h3 class="title-d">توضیحات راجب ملک :</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="property-description">
+                <p class="description color-text-a">
+                {{house.desciption}}
+                </p>
+                <!-- <p class="description color-text-a no-margin">
+                  Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget
+                  malesuada. Quisque velit nisi,
+                  pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada.
+                </p> -->
+              </div>
+              <div class="row section-t3">
+                <div class="col-sm-12">
+                  <div class="title-box-d">
+                    <h3 class="title-d">امکانات رفاهی</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="amenities-list color-text-a">
+                <ul class="list-a no-margin">
+                  <li>Balcony</li>
+                  <li>Outdoor Kitchen</li>
+                  <li>Cable Tv</li>
+                  <li>Deck</li>
+                  <li>Tennis Courts</li>
+                  <li>Internet</li>
+                  <li>Parking</li>
+                  <li>Sun Room</li>
+                  <li>Concrete Flooring</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% if user.is_authenticated %}
+       
+        <div class="col-md-12">
+          <div class="row section-t3">
+            <div class="col-sm-12">
+              <div class="title-box-d">
+                <h3 class="title-d">ارتباط با مشاور ملک مرتبط :</h3>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            
+            
+            <div class="col-md-6 col-lg-4">
+              <img style="width: 100%; height: 300px;" src="{{house.agent.image.url}}" alt="" class="img-fluid">
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="property-agent">
+                <h4 class="title-agent">{{house.agent}}</h4>
+                <p class="color-text-a">
+                 {{house.agent.description}}
+                </p>
+                <ul class="list-unstyled">
+                  <li class="d-flex justify-content-between">
+                    <strong>شماره تلفن :</strong>
+                    <span class="color-text-a">{{house.agent.phone_number}}</span>
+                  </li>
+                 
+                  <li class="d-flex justify-content-between">
+                    <strong>ایمیل:</strong>
+                    <span class="color-text-a">{{house.agent.email}}</span>
+                  </li>
+                  <li class="d-flex justify-content-between">
+                    <strong>آیدی تلگرام :</strong>
+                    <span class="color-text-a">{{house.agent.telegram}}</span>
+                  </li>
+                </ul>
+                <div class="socials-a">
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <a href="#">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#">
+                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#">
+                        <i class="fa fa-dribbble" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+           
+      
+            <div class="col-md-12 col-lg-4">
+              <div class="property-contact">
+                <form class="form-a" method="post" role="form">
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col-md-12 mb-1">
+                      <div class="form-group">
+                        <input type="text" name="name" class="form-control form-control-lg form-control-a" id="inputName"
+                          placeholder="نام" required>
+                      </div>
+                    </div>
+                    <div class="col-md-12 mb-1">
+                      <div class="form-group">
+                        <input type="email" name="email" class="form-control form-control-lg form-control-a" id="inputEmail1"
+                          placeholder="ایمیل" required>
+                      </div>
+                    </div>
+                    <div class="col-md-12 mb-1">
+                      <div class="form-group">
+                        <textarea name="message" id="textMessage" class="form-control" placeholder="متن پیام"  cols="45"
+                          rows="8" required></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <button type="submit" class="btn btn-a">ارسال پیام</button>
+                    </div>
+                  </div>
+                </form>
+                
+                {% if messages   %}
+                <ul class="messages">
+                    {% for message in messages %}
+
+                    <li style="text align : right"  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+
+                    {% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  <!--/ Property Single End /-->
+
+{% endblock content %}

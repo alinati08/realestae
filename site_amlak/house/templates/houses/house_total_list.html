@@ -1,0 +1,178 @@
+
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+
+<html>
+
+<body>
+
+
+
+
+
+
+  <!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">املاک  ما </h1>
+            {% comment %} <span class="color-text-a">Grid Properties</span> {% endcomment %}
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="{% url 'house:house_list'  %}">صفحه اصلی</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                املاک
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+  <!--/ Property Grid Star /-->
+  <section class="property-grid grid">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="grid-option">
+            <form>
+              <select class="custom-select">
+                <option selected>All</option>
+                <option value="1">New to Old</option>
+                <option value="2">For Rent</option>
+                <option value="3">For Sale</option>
+              </select>
+            </form>
+          </div>
+        </div>
+        {% for house in house_list %}
+        
+        <div class="col-md-4">
+          <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+              <img style="width: 100%; height: 250px;" src="{{house.first_photo.url}}" alt="" class="img-a img-fluid">
+            </div>
+            <div class="card-overlay">
+              <div class="card-overlay-a-content">
+                <div class="card-header-a">
+                  <h2 class="card-title-a">
+                    <a href="#">{{house.name}}
+                      <br /> {{house.description}}</a>
+                  </h2>
+                </div>
+                {% if house.price == 0 %}
+                <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <span class="price-a">قیمت رهن یا فروش  |{{house.mortgage}}</span>
+                  </div>
+                  
+                {% else %}
+                <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <span class="price-a">قیمت رهن یا فروش  |{{house.price}}</span>
+                  </div>
+                  {% endif %}
+                  <a href="{% url 'house:house_detail' house.id %}" class="link-a">مشاهده جزییات
+                    <span class="ion-ios-arrow-forward"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">مساحت</h4>
+                      <span>{{house.aria}}m
+                        <sup>2</sup>
+                      </span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">تعداد خواب </h4>
+                      <span>{{house.room}}</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">حمام و دسشویی</h4>
+                      <span>{{house.bathroom}}</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">پارکینگ</h4>
+                      <span>{{house.house_park}}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+       
+      </div>
+      
+      {% if house_list.has_other_pages %}
+
+      <div class="row">
+        <div class="col-sm-12">
+          <nav class="pagination-a">
+            <ul class="pagination justify-content-end">
+              <li class="page-item disabled">
+                {% if house_list.has_previous %}
+
+                <a class="page-link" href="?page={{house_list.previous_page_number}}" tabindex="-1">
+                  <span class="ion-ios-arrow-back"></span>
+                </a>
+              </li>
+              {% endif %}
+
+            
+
+              {% for page in house_list.paginator.page_range %}
+
+              {% if house_list.number == page %}
+              <li class="page-item active">
+                  <a class="page-link disabled" href="?page={{page}}">{{page}}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{page}}">{{page}}</a>
+                </li>
+
+              {% endif %}
+          
+              {% endfor %}
+
+              {% if house_list.has_next %}
+              <li class="page-item next">
+                <a class="page-link" href="?page={{house_list.next_page_number}}">
+                  <span class="ion-ios-arrow-forward"></span>
+                </a>
+              </li>
+              
+              {% endif %}
+
+            </ul>
+          </nav>
+        </div>
+      </div>
+      {% endif %}
+
+    </div>
+  </section>
+
+
+
+</body>
+</html>
+
+{% endblock content %}
